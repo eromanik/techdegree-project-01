@@ -158,6 +158,8 @@ func experiencedPlayers(in players: [[String : Any]]) -> Int {
 for player in orderedPlayersByHeight {
     if let experienced = player["soccerExperience"] as? Bool {
         if experienced == true {
+            
+            // Distribute experience players evenly
             let dragonsExperienced = experiencedPlayers(in: dragons)
             let sharksExperienced = experiencedPlayers(in: sharks)
             let raptorsExperienced = experiencedPlayers(in: raptors)
@@ -169,6 +171,8 @@ for player in orderedPlayersByHeight {
                 raptors.append(player)
             }
         } else {
+            
+            // Distribute inexperience players evenly
             if dragons.count <= sharks.count && dragons.count <= raptors.count {
                 dragons.append(player)
             } else if sharks.count <= dragons.count && sharks.count <= raptors.count {
@@ -211,7 +215,7 @@ for player in raptors {
 
 print(letters)
 
-// Calculate average height for each team
+// Function to calculate average height
 
 func averageHeight(team: [[String: Any]]) -> Double {
 
@@ -228,6 +232,8 @@ func averageHeight(team: [[String: Any]]) -> Double {
     
     return Double(heightSum) / Double(heightArray.count)
 }
+
+// Calculate and print average height for each team
 
 let averageDragonHeight = averageHeight(team: dragons)
 print("Average Height of Dragons:")
